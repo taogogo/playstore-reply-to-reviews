@@ -26,7 +26,10 @@ The script is a python2 file.
   >>> import apiclient
   >>>
   ```
-
+3. install Oauth2client
+  ```bash
+  $ pip install oauth2client
+  ```
   You may need to use `python2` instead of `python`
 
 ## First request using OAuth2: Installed application
@@ -55,6 +58,18 @@ The script is a python2 file.
 
 
 ## Running as a cronjob
+
+IF YOU ARE USING A WINDOWS SYSTEM, you can follow:
+
+1, create a bat file
+C:\Users\Administrator\AppData\Local\Programs\Python\Python39\python.exe C:\Users\Administrator\Desktop\gg-api-python\reply-to-reviews.py com.xxxxx.xxxx
+
+2,add a Task Scheduler
+
+run every 1 minute
+
+
+IF YOU ARE USING A LINUX/UNIX SYSTEM, you can follow:
 
 SSH to your server and `crontab -e` to edit the crontab.
 
