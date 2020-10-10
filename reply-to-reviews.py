@@ -18,6 +18,7 @@
 # The api is https://developers.google.com/android-publisher/api-ref/reviews
 # Quotas https://developers.google.com/android-publisher/reply-to-reviews
 # How to run as cron: http://unix.stackexchange.com/questions/56491/interactive-shell-with-environment-identical-to-cron
+# Support python3 and desc how to run on Windows
 
 import argparse
 import sys
@@ -58,52 +59,52 @@ def main(argv):
       reviews_request = service.reviews().list(packageName=package_name, translationLanguage='en', maxResults=50, token=nextToken)
 
     reviews_result = reviews_request.execute()
-    # print reviews_result
-    # print reviews_result['tokenPagination']['nextPageToken']
+    # print( reviews_result )
+    # print( reviews_result['tokenPagination']['nextPageToken'] )
     # nextToken = reviews_result['tokenPagination']['nextPageToken']
 
-    print "============================================="
+    print( "=============================================" )
 
-    # print reviews_result['tokenPagination']
+    # print( reviews_result['tokenPagination'] )
     reviews = reviews_result['reviews']
 
     for review in reviews:
       review_id = review['reviewId']
 
       # if 'authorName' in review:
-        # print review['authorName']
+        # print( review['authorName']
 
-      # print review_id
-      # print review
+      # print( review_id )
+      # print( review )
 
       usercomment = review['comments'][0]['userComment']
-      print usercomment['text'].encode('utf-8')
+      print( usercomment['text'].encode('utf-8')
       if 'originalText' in usercomment:
-        print usercomment['originalText'].encode('utf-8')
-      print usercomment['reviewerLanguage']
+        print( usercomment['originalText'].encode('utf-8')
+      print( usercomment['reviewerLanguage'] )
       rating = usercomment['starRating']
-      print rating
+      print( rating )
 
       if len(review['comments']) > 1:
         # Has dev comment - we've already replied
         devcomment = review['comments'][1]['developerComment']
-        print devcomment['text'].encode('utf-8')
+        print( devcomment['text'].encode('utf-8') )
       else:
         # No dev comment
         if rating < 5:
           replyToReview(service, package_name, review_id)
 
-      print "----------------------------------------------------"
+      print( "----------------------------------------------------"
 
   except client.AccessTokenRefreshError:
-    print ('The credentials have been revoked or expired, please re-run the '
-           'application to re-authorize')
+    print( 'The credentials have been revoked or expired, please re-run the '
+           'application to re-authorize' )
 
 def replyToReview(service, package_name, review_id):
   universalCannedResponse = "Many thanks for your valuable feedback. We are unfortunately unable to react to all of the reviews on Google Play Store. To resolve any issues with the app, it is best to contact us on our support email: support@urbandroid.org or to give us more details, use menu-report a bug. Many thanks. Jiri from Urbandroid Team."
   reply_request = service.reviews().reply(body={"replyText": universalCannedResponse}, packageName=package_name, reviewId=review_id)
   reply_request.execute()
-  print 'Replied to review'
+  print( 'Replied to review' )
 
 
 if __name__ == '__main__':
@@ -163,6 +164,5 @@ if __name__ == '__main__':
   #     }
   #   ]
   # }
-
 
 
