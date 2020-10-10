@@ -36,7 +36,7 @@ def main(argv):
   service, flags = sample_tools.init(
       argv,
       'androidpublisher',
-      'v2',
+      'v3',
       __doc__,
       __file__,
       parents=[argparser],
