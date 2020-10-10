@@ -55,6 +55,8 @@ The script is a python2 file.
 
 5. The tokens will be stored in `androidpublisher.dat`. Remove this file to restart the
  auth flow.
+ 
+6. copy reply-to-reviews.py to Android Developer API folder
 
 
 ## Running as a cronjob
