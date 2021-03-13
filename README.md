@@ -6,7 +6,7 @@ The script is intended to run as a cronjob. On each run, it will check the lates
 
 ## Installation
 
-The script is a python2 file.
+The script is a python3 file.
 
 1. Download Google APIs Client Library for Python (google-api-python-client):
   https://code.google.com/p/google-api-python-client/
@@ -30,7 +30,7 @@ The script is a python2 file.
   ```bash
   $ pip install oauth2client
   ```
-  You may need to use `python2` instead of `python`
+  You may need to use `python3` instead of `python`
 
 ## First request using OAuth2: Installed application
 
@@ -91,6 +91,6 @@ Now you are in a cron environment shell. Run the reply-to-reviews.py script and 
 
 Sample crontab entry would be:
 
-```  */5 *  *   *   *     /usr/bin/python2 /home/username/reply-to-reviews/reply_to_reviews.py com.package.name >> /home/username/reply-to-reviews.log```
+```  */5 *  *   *   *     /usr/bin/python3 /home/username/reply-to-reviews/reply_to_reviews.py com.package.name >> /home/username/reply-to-reviews.log```
 
 This will run the script every 5 minutes and also log to a logfile, which you can check using `tailf /home/username/reply-to-reviews.log`.
